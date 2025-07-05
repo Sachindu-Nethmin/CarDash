@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector3.forward * moveSpeed;
+        rb.linearVelocity = Vector3.forward * moveSpeed;
     }
 
     private void SwipeLeftRight()
@@ -98,28 +98,26 @@ public class Player : MonoBehaviour
 
     private void MoveRight(float lane)
     {
-        transform.DOMoveX(lane,smoothMove).OnStart(RotateRight).OnComplete(RotateRight);
+        transform.DOMoveX (lane, smoothMove).OnStart(RotateRight).OnComplete(RotateRight);
     }
 
     private void MoveLeft(float lane)
     {
-        transform.DOMoveX(lane,smoothMove).OnStart(RotateLeft).OnComplete(RotateLeft);
+        transform.DOMoveX (lane, smoothMove).OnStart(RotateLeft).OnComplete(RotateLeft);
     }
 
     private void RotateLeft()
     {
         if(rotateLeft)
         {
-            transform.DORotate(new Vector3 (0,0,0), smoothRotationSpeed);
+            transform.DORotate (new Vector3 (0,0,0), smoothRotationSpeed);
             rotateLeft = false;
         }
         else
         {
-            if(rotateLeft)
-            {
-                transform.DORotate(new Vector3 (0, rotationDegY * lrSign, rotationDegZ * lrSign), smoothRotationSpeed);
-                rotateLeft = true;
-            }
+            
+            transform.DORotate (new Vector3 (0, rotationDegY * lrSign, rotationDegZ * lrSign), smoothRotationSpeed);
+            rotateLeft = true;
         }
     }
 
@@ -127,16 +125,13 @@ public class Player : MonoBehaviour
     {
         if(rotateRight)
         {
-            transform.DORotate(new Vector3 (0,0,0), smoothRotationSpeed);
+            transform.DORotate (new Vector3 (0,0,0), smoothRotationSpeed);
             rotateRight = false;
         }
         else
         {
-            if(rotateLeft)
-            {
-                transform.DORotate(new Vector3 (0, -rotationDegY * lrSign, -rotationDegZ * lrSign), smoothRotationSpeed);
-                rotateRight = true;
-            }
+            transform.DORotate (new Vector3 (0, -rotationDegY * lrSign, -rotationDegZ * lrSign), smoothRotationSpeed);
+            rotateRight = true;
         }
     }
 
