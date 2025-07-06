@@ -59,25 +59,28 @@ public class OtherCarManager : MonoBehaviour
         //create a car
         if(UnityEngine.Random.value <= carFreq)
         {
-            Vector3 carPos = listCarPos[UnityEngine.Random.Range(0,listCarPos.Count)];
-            while(carPos.x == previousCarPos.x)
+            Vector3 carPos = listCarPos[UnityEngine.Random.Range(0, listCarPos.Count)];
+            while (carPos.x == previousCarPos.x)
             {
                 carPos = listCarPos[UnityEngine.Random.Range(0, listCarPos.Count)];
-
             }
 
-            previousCarPos = carPos;
-
-            //random cars
-            GameObject car = GetRandomCar();
-            car.transform.position = carPos;
-
-            if(UnityEngine.Random.value <= reverseCarFreq)
+            // Check if spawn position is within allowed range (-9 to +9)
+            if (carPos.x >= -9f && carPos.x <= 9f)
             {
-                car.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            }
+                previousCarPos = carPos;
 
-            car.transform.parent = activeCars.transform;
+                //random cars
+                GameObject car = GetRandomCar();
+                car.transform.position = carPos;
+
+                if (UnityEngine.Random.value <= reverseCarFreq)
+                {
+                    car.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                }
+
+                car.transform.parent = activeCars.transform;
+            }
         }
 
     }
