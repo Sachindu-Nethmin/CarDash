@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
                 {
                     MoveLeft(leftLane1);
                 }
-                if(transform.position.x == leftLane1);
+                if(transform.position.x == leftLane1)
                 {
                     MoveLeft(leftLane2);
                 }
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
                 {
                     MoveRight(rightLane1);
                 }
-                if(transform.position.x == rightLane1);
+                if(transform.position.x == rightLane1)
                 {
                     MoveRight(rightLane2);
                 }
